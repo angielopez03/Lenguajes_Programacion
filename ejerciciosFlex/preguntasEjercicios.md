@@ -1,4 +1,4 @@
-## Ejecución de los ejercicios}
+# Ejecución de los ejercicios
 
 ### Ejercicio 1: Contador de palabras
 
