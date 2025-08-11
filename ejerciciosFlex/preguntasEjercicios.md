@@ -57,10 +57,15 @@ Si se introduce un comentario como: /* esto es un comentario */
 El scanner procesará:
 
 / → Regla . → Imprime "Mystery character /"
+
 * → Regla . → Imprime "Mystery character *"
+
   → Regla [ \t] → Ignora espacio
+
 e → Regla . → Imprime "Mystery character e"
-s → Regla . → Imprime "Mystery character s"
+
+s → Regla . → Imprime "Mystery character s"}
+
 ... y así con cada carácter
 
 El resultado da error y mensajes de "Mystery character" para cada símbolo del comentario ya que no hay una regla que lo maneje.
@@ -71,6 +76,7 @@ En el ESCÁNER (Flex)
 Los comentarios son elementos léxicos, no sintácticos:
 
 Léxico: Patrones de caracteres (como palabras, números, símbolos)
+
 Sintáctico: Estructura gramatical (como expresiones, declaraciones)
 
 2. Eficiencia
@@ -81,10 +87,13 @@ Sintáctico: Estructura gramatical (como expresiones, declaraciones)
 ```
 
 El scanner puede descartar comentarios antes de enviar tokens al parser
+
 El parser nunca ve los comentarios → más eficiente
+
 Menos trabajo para el parser
 
 3. Separación de Responsabilidades
 
 Scanner: "¿Qué tipo de símbolos hay?" → Maneja comentarios
+
 Parser: "¿Cómo se combinan estos símbolos?" → Maneja gramática
