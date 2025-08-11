@@ -276,68 +276,86 @@ Esto significa: 5 + 3 & 2 | 1 se evalúa como ((5 + 3) & 2) | 1
 
 - Pregunta: ¿La versión manuscrita del escáner en el Ejemplo 1-4 reconoce exactamente los mismos tokens que la versión generada por flex?
 
+No. La versión manuscrita reconoce más tokens que la versión Flex
+
 Hay ciertos aspectos a comparar:
 
-### 1. Reconocimiento de Patrones
+### Diferencias principales
 
-Versión flex
+- Tokens adicionales en la versión manuscrita
 
 ```
-"+" { return ADD; }        /* Operador suma exacto */
-[0-9]+ { ... }            /* Uno o más dígitos */
-[ \t] { }                 /* Espacios y tabs */
-. { ... }                 /* Cualquier otro carácter */
+case '(': return OP;    /* Paréntesis izquierdo */
+case ')': return CP;    /* Paréntesis derecho */
 
 ```
 
-Una versión manuscrita típicamente usaría:
+En Flex: Los paréntesis se tratarían como "Mystery character"
+
+- Manejo de comentarios
+
+Versión manuscrita
+  
+```
+case '/': c = getc(yyin);
+if(c == '/') {
+    /* it's a comment */
+    while((c = getc(yyin)) != '\n')
+        if(c == EOF) return 0;
+    break;  /* Ignora toda la línea */
+}
 
 ```
-char c = getchar();
-if (c == '+') return ADD;
-else if (isdigit(c)) { /* leer secuencia de dígitos */ }
-else if (c == ' ' || c == '\t') { /* ignorar */ }
+
+En Flex: No hay manejo de comentarios - / solo es DIV
+
+- Manejo de números multidígito
+
+Ambas versiones son funcionalmente iguales:
+
+- Flex: [0-9]+ automáticamente
+- Manuscrita: Bucle manual pero mismo resultado
+
+### Comportamiento con entrada de prueba
+
+**Entrada:** 3 + (4 / 2) // comentario
+
+- Flex: NUMBER(3) ADD Mystery( Mystery) DIV NUMBER(2) Mystery) Mystery/ Mystery/ ...
+- Manuscrito: NUMBER(3) ADD OP NUMBER(4) DIV NUMBER(2) CP EOL
+
+### Manejo de EOF
+
+Manuscrita: Manejo sofisticado del EOF
 
 ```
+static int seeneof = 0;
+if(seeneof) return 0;
+if(c == EOF) seeneof = 1;
 
-### 2. Diferencias comunes
+```
+Flex: Manejo automático más simple
 
-**Manejo de números**
+### Robustez
 
-- Flex: [0-9]+ reconoce secuencias automáticamente
-- Manual: Debe hacer bucles para leer todos los dígitos
+La versión manuscrita es más robusta:
 
-**Whitespace**
+- Soporta paréntesis para expresiones complejas
+- Ignora comentarios de línea (//)
+- Mejor manejo de EOF en casos edge
 
-- Flex: [ \t] maneja múltiples espacios
-- Manual: Puede procesar un carácter a la vez
+La versión flex es más simple:
 
-**Caracteres desconocidos**
+- Código más conciso
+- Menos propenso a bugs
+- Pero menos funcional
 
-- Flex: . captura todo lo demás
-- Manual: Debe manejar cada caso explícitamente
+**Respuesta:** No, la versión manuscrita reconoce más tokens que la versión Flex:
 
-**Eficiencia**
+- Adicionales: OP (paréntesis izquierdo), CP (paréntesis derecho)
+- Funcionalidad extra: Ignora comentarios //
+- Menos tokens "Mystery": Maneja casos que Flex reportaría como desconocidos
 
-- Flex: . Autómata optimizado
-- Manual: Código manual con if/else
-
-### 3. Posibles Discrepancias
-
-**Números multi-dígito**
-
-- Flex: 123 se reconoce como un solo token NUMBER
-- Manual: Podría procesar 1, 2, 3 como tokens separados si no está bien implementado
-
-**Secuencias de whitespace**
-
-- Flex:     (múltiples espacios) se ignoran automáticamente
-- Manual: Podría requerir bucles para consumir todos los espacios
-
-**Manejo de EOF**
-
-- Flex: Maneja automáticamente el final del archivo
-- Manual: Debe verificar explícitamente EOF
+La versión manuscrita es más completa pero más compleja de mantener.
 
 ---
 
@@ -424,7 +442,7 @@ Flex es excelente para:
 - Tokens bien definidos y fijos
 - Sintaxis consistente
 
-Flex NO es ideal para:
+Flex no es ideal para:
 
 - Lenguajes sensibles al contexto
 - Sintaxis que depende del estado global
@@ -510,12 +528,12 @@ int main(int argc, char **argv) {
 
 ```
 # 1. Crear archivo de prueba grande
-yes "esto es una prueba" | head -1000 > test.txt
+yes "esto es una prueba" | head -1000000 > test.txt
 
 # 2. Compilar ambas versiones
 flex wc_flex.l
 cc -o wc_flex lex.yy.c -lfl
-cc -o wc_manual wc.c
+cc -o wc_manual wc_manual.c
 
 # 3. Probar y medir tiempo
 echo "=== Versión Flex ==="
@@ -524,29 +542,74 @@ time ./wc_flex < test.txt
 echo "=== Versión C Manual ==="
 time ./wc_manual < test.txt
 
-# 4. Comparar con wc de Unix (referencia)
-echo "=== wc de Unix ==="
-time wc test.txt
+```
+
+### Ejecución:
+
+<img width="739" height="383" alt="image" src="https://github.com/user-attachments/assets/25a4907b-fe59-4ff6-9834-06feeaa923dd" />
+
+**Análisis de resultados**
+
+Rendimiento:
+
+- C Manual: 0.128s
+- Flex: 0.261s
+  
+C Manual es 104% más rápida (más del doble de velocidad)
+
+**¿Por qué C manual es más rápido?**
+
+1. Overhead de Flex
+
+```
+// Flex internamente hace algo como:
+while (state != FINAL) {
+    c = input();
+    state = transition_table[state][c];  // Búsqueda en tabla
+    // Más lógica de autómata...
+}
 
 ```
 
-### Velocidad:
+2. Simplicidad de C manual
 
-- Flex: Más rápida para archivos grandes
-- C Manual: Más lenta debido a más llamadas a isalpha() y lógica de estado
+```
+// C manual es directo:
+c = getchar();           // Una sola llamada
+if (isalpha(c)) { ... }  // Verificación simple
 
-### Facilidad de Depuración:
+```
 
-Flex - Más Fácil:
+3. Factores técnicos
 
-- Lógica clara y declarativa
-- Patrones visuales obvios
-- Menos código para debuggear
+Flex tiene más overhead porque:
 
-C Manual - Más Difícil:
+- Tablas de transición: Consulta tablas en memoria para cada carácter
+- Función strlen(): Calcula longitud de cada palabra reconocida
+- Buffer management: Maneja buffers internos
+- Lógica de backtracking: Para patrones complejos
 
-- Lógica de estados puede ser confusa
-- Más lugares donde pueden ocurrir bugs
-- Casos edge más difíciles de manejar
+C Manual es más eficiente porque:
 
+- Una sola pasada: Un getchar() por carácter
+- Sin strlen(): Cuenta caracteres sobre la marcha
+- Lógica mínima: Solo verifica isalpha() y maneja estado
 
+**¿Cuándo flex podría ser más rápida?**
+
+Patrones Muy Complejos:
+
+```
+/* Si tuviera patrones como estos: */
+[a-zA-Z][a-zA-Z0-9_]*\.[a-zA-Z]{2,4}    /* emails */
+https?://[^\s]+                          /* URLs */
+[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}  /* IPs */
+
+```
+La versión manual sería muchísimo más compleja y probablemente más lenta.
+
+- Múltiples estados: Si necesitara manejar comentarios, strings, etc., la versión manual se volvería muy complicada.
+
+**Conclusión**
+
+Para conteo simple de palabras C manual siempre será más rápida, la tarea es tan simple que el overhead de Flex no se justifica
