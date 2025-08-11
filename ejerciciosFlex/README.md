@@ -74,7 +74,7 @@ El resultado da error y mensajes de "Mystery character" para cada símbolo del c
 
 En el escáner (Flex)
 
-### 1. Nivel de Abstracción Apropiado
+### 1. Nivel de abstracción apropiado
 
 Los comentarios son elementos léxicos, no sintácticos:
 
@@ -95,7 +95,7 @@ El parser nunca ve los comentarios → más eficiente
 
 Menos trabajo para el parser
 
-### 3. Separación de Responsabilidades
+### 3. Separación de responsabilidades
 
 Scanner: "¿Qué tipo de símbolos hay?" → Maneja comentarios
 
@@ -359,15 +359,15 @@ La versión manuscrita es más completa pero más compleja de mantener.
 
 ---
 
-## 5. Limitaciones de Flex
+## 5. Limitaciones de flex
 
 - Pregunta: ¿Puedes pensar en idiomas para los que Flex no sería una buena herramienta para escribir un escáner?
 
 Flex es poderoso para muchos lenguajes, pero tiene limitaciones importantes para ciertos tipos de lenguajes.
 
-### 1. Lenguajes Sensibles al Contexto
+### 1. Lenguajes sensibles al contexto
 
-**Python (Indentación Significativa)**
+**Python (indentación significativa)**
 
 ```
 if x > 0:
@@ -391,9 +391,9 @@ Por qué es difícil: Flex no puede determinar si los espacios representan entra
 
 ```
 
-### 2. Lenguajes con Sintaxis Dependiente del Contexto
+### 2. Lenguajes con sintaxis dependiente del contexto
 
-**C/C++ con Ambigüedad Typedef**
+**C/C++ con ambigüedad typedef**
 
 ```
 typedef int T;
@@ -406,7 +406,7 @@ Problema: Flex solo ve lexemas, no puede distinguir si T es:
 - Un tipo (typedef)
 - Una variable
 
-**HTML/XML Anidado**
+**HTML/XML anidado**
 
 ```
 <script>
@@ -417,9 +417,9 @@ Problema: Flex solo ve lexemas, no puede distinguir si T es:
 
 Problema: Flex no puede manejar fácilmente contextos anidados donde las reglas cambian según el estado.
 
-### 3. Lenguajes que Requieren Lookahead Extenso
+### 3. Lenguajes que requieren lookahead extenso
 
-**SQL con Palabras Clave Contextuales**
+**SQL con palabras clave contextuales**
 
 ```
 SELECT order FROM order ORDER BY order;
