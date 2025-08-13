@@ -4,9 +4,11 @@
 
 - Gramática 1
 
-<img width="897" height="519" alt="image" src="https://github.com/user-attachments/assets/46e7cfa5-bc33-45c2-b8fe-8a006ad26a90" />
+<img width="858" height="520" alt="image" src="https://github.com/user-attachments/assets/51fac345-f8b8-4b35-9668-4adac2ee7c21" />
 
-<img width="899" height="451" alt="image" src="https://github.com/user-attachments/assets/d2401d2d-ffda-4c0a-9947-a3b0d769157f" />
+
+<img width="832" height="423" alt="image" src="https://github.com/user-attachments/assets/3e346026-a519-4092-874b-58607cd6df4a" />
+
 
 ---
 
