@@ -2,9 +2,6 @@
 
 <img width="648" height="209" alt="image" src="https://github.com/user-attachments/assets/4f59d33b-5352-4929-96f6-a2b0d4d26bc3" />
 
-<img width="648" height="312" alt="image" src="https://github.com/user-attachments/assets/3ca80d6b-f753-426a-a9fc-cb7fb4ad0599" />
-
-
 
 Este programa es un simulador de un Autómata Finito Determinista (AFD) que:
 
@@ -18,6 +15,8 @@ Este programa es un simulador de un Autómata Finito Determinista (AFD) que:
 ## Ejecución
 
 <img width="658" height="344" alt="image" src="https://github.com/user-attachments/assets/06f31012-3710-4d47-9f73-73dc19328df8" />
+
+<img width="648" height="312" alt="image" src="https://github.com/user-attachments/assets/17fd39fd-eae5-4816-8d10-4a0ec791369c" />
 
 
 ---
