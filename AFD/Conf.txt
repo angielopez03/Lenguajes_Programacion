@@ -1,0 +1,6 @@
+>010
+ 112
++222
+-
+El alfabeto de esta es 0 y 1
+

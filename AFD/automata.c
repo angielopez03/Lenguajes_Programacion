@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-// Estructura para representar un estado del AFD
 typedef struct {
     char tipo;       // '>' = inicial, '+' = aceptación, '-' = normal
     char nombre;     // nombre del estado (ej. 'A', 'B', 'C')
@@ -10,7 +9,6 @@ typedef struct {
     char destino1;   // estado destino con símbolo '1'
 } Estado;
 
-// Prototipos de funciones
 int contarEstados(FILE* archivo);
 void mostrarAlfabeto(FILE* archivo);
 Estado* cargarEstados(FILE* archivo, int numEstados);
@@ -23,17 +21,15 @@ int main() {
     int numEstados;
     Estado* estados;
 
-    // Abrir archivo de configuración
-    archivoConfig = fopen("config.txt", "r");
+    archivoConfig = fopen("Conf.txt", "r");
     if(archivoConfig == NULL) {
-        perror("Error al abrir config.txt");
+        perror("Error al abrir Conf.txt");
         exit(1);
     }
 
-    // Abrir archivo con cadenas de prueba
-    archivoCadenas = fopen("prueba.txt", "r");
+    archivoCadenas = fopen("Cadenas.txt", "r");
     if(archivoCadenas == NULL) {
-        perror("Error al abrir prueba.txt");
+        perror("Error al abrir Cadenas.txt");
         exit(1);
     }
 
@@ -42,13 +38,10 @@ int main() {
     mostrarAlfabeto(archivoConfig);
     estados = cargarEstados(archivoConfig, numEstados);
 
-    // Mostrar tabla de transiciones
     mostrarTabla(estados, numEstados);
 
-    // Verificar las cadenas
     verificarCadenas(estados, numEstados, archivoCadenas);
 
-    // Liberar memoria y cerrar archivos
     free(estados);
     fclose(archivoConfig);
     fclose(archivoCadenas);
@@ -56,7 +49,6 @@ int main() {
     return 0;
 }
 
-// Cuenta cuántos estados hay antes del separador "-"
 int contarEstados(FILE* archivo) {
     char buffer[8];
     int contador = -1;
@@ -68,7 +60,6 @@ int contarEstados(FILE* archivo) {
     return contador;
 }
 
-// Muestra el alfabeto definido en el archivo después de "-"
 void mostrarAlfabeto(FILE* archivo) {
     char linea[10], simbolo;
     do {
@@ -84,7 +75,6 @@ void mostrarAlfabeto(FILE* archivo) {
     fseek(archivo, 0, SEEK_SET); // rebobinar
 }
 
-// Carga los estados y transiciones en memoria
 Estado* cargarEstados(FILE* archivo, int numEstados) {
     Estado* estados = (Estado*) calloc(numEstados, sizeof(Estado));
     char buffer[8];
@@ -98,7 +88,6 @@ Estado* cargarEstados(FILE* archivo, int numEstados) {
     return estados;
 }
 
-// Muestra la tabla de transiciones
 void mostrarTabla(Estado* estados, int numEstados) {
     printf("\nTabla de transiciones:\n");
     printf("Tipo Estado  0   1\n");
@@ -112,17 +101,15 @@ void mostrarTabla(Estado* estados, int numEstados) {
     printf("\n");
 }
 
-// Busca el índice de un estado por nombre
 int buscarIndiceEstado(char nombreEstado, Estado* estados, int numEstados) {
     for(int i=0; i<numEstados; i++) {
         if(estados[i].nombre == nombreEstado) {
             return i;
         }
     }
-    return -1; // no encontrado
+    return -1;
 }
 
-// Verifica cada cadena en el archivo
 void verificarCadenas(Estado* estados, int numEstados, FILE* archivoCadenas) {
     char cadena[100];
 
@@ -161,7 +148,6 @@ void verificarCadenas(Estado* estados, int numEstados, FILE* archivoCadenas) {
             }
         }
 
-        // Verificar aceptación
         int idxFinal = buscarIndiceEstado(estadoActual, estados, numEstados);
         if(idxFinal != -1 && estados[idxFinal].tipo == '+') {
             printf("Cadena \"%s\" aceptada\n", cadena);
@@ -170,3 +156,4 @@ void verificarCadenas(Estado* estados, int numEstados, FILE* archivoCadenas) {
         }
     }
 }
+
