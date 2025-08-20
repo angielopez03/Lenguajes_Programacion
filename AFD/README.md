@@ -11,7 +11,6 @@ Este programa es un simulador de un Autómata Finito Determinista (AFD) que:
 
 ## Ejecución
 
-<img width="584" height="346" alt="image" src="https://github.com/user-attachments/assets/24d916ce-8d5b-4e16-b0ac-fa4fb05483de" />
 
 
 ---
