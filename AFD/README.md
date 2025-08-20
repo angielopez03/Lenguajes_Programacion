@@ -22,7 +22,9 @@ typedef struct {
     char destino1;   // estado destino con símbolo '1'
 } Estado;
 
+
 ---
+
 
 ```
 
