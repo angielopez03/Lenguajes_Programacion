@@ -1,5 +1,8 @@
 # Autómata
 
+<img width="648" height="209" alt="image" src="https://github.com/user-attachments/assets/4f59d33b-5352-4929-96f6-a2b0d4d26bc3" />
+
+
 Este programa es un simulador de un Autómata Finito Determinista (AFD) que:
 
 - Lee la configuración del autómata desde config.txt.
@@ -11,6 +14,7 @@ Este programa es un simulador de un Autómata Finito Determinista (AFD) que:
 
 ## Ejecución
 
+<img width="658" height="344" alt="image" src="https://github.com/user-attachments/assets/06f31012-3710-4d47-9f73-73dc19328df8" />
 
 
 ---
