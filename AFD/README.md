@@ -22,6 +22,8 @@ typedef struct {
     char destino1;   // estado destino con símbolo '1'
 } Estado;
 
+---
+
 ```
 
 ## int contarEstados(FILE* archivo)
@@ -50,6 +52,7 @@ Cuenta cuántos estados hay definidos en el archivo config.txt.
 2. Cada vez que lee una línea, aumenta el contador.
 3. Al final regresa el número de estados y reinicia el puntero del archivo con fseek para que luego pueda volver a leerse desde el inicio.
 
+---
 
 ## void mostrarAlfabeto(FILE* archivo)
 
@@ -80,6 +83,7 @@ Muestra en pantalla el alfabeto/lenguaje del autómata.
 2. Después imprime carácter por carácter lo que sigue (el lenguaje, ej: 01) hasta que encuentra un salto de línea \n.
 3. Reinicia el puntero del archivo (fseek) para que no se pierda lo ya leído.
 
+---
 
 ## Estado* cargarEstados(FILE* archivo, int numEstados)
 
@@ -115,6 +119,8 @@ Crea y llena la tabla de transiciones del AFD en memoria dinámica.
 7. Columna 3 → transición con símbolo 1.
 8. Recorre el archivo y copia esos datos a la tabla.
 
+---
+
 ## void mostrarTabla(Estado* estados, int numEstados)
 
 ```
@@ -142,6 +148,8 @@ Muestra la tabla de transiciones para que el usuario vea cómo está estructurad
 
 Recorre cada estado (for) y cada columna (for) e imprime con formato [ ] los datos.
 
+---
+
 ## int buscarIndiceEstado(char nombreEstado, Estado* estados, int numEstados)
 
 ```
@@ -165,6 +173,8 @@ Localiza el índice de un estado dentro de la tabla.
 
 1. Recorre todos los estados y compara si el estado coincide con la columna 1 de alguna fila de la tabla. Si coincide, regresa el índice.
 2. Si no lo encuentra, imprime un error.
+
+---
 
 ## void verificarCadenas(Estado* estados, int numEstados, FILE* archivoCadenas)
 
@@ -236,6 +246,8 @@ Verifica una a una las cadenas del archivo Cadenas.txt y decide si son aceptadas
 6. Si es 0, busca en la tabla la transición correspondiente.
 7. Si es 1, lo mismo pero en otra columna.
 8. Al final revisa si el estado en el que terminó es de aceptación (+).
+
+---
 
 ## int main()
 
