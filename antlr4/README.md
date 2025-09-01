@@ -14,7 +14,8 @@ La calculadora soporta:
     - Suma (+), Resta (-), Multiplicación (*), División (/)
 - Agrupación con paréntesis: ( )
 - Variables y asignación:
-- Funciones matemáticas: sin(x), cos(x), tan(x), sqrt(x), ln(x), log(x)
+- Funciones matemáticas:
+    - Sin(x), cos(x), tan(x), sqrt(x), ln(x), log(x)
 - Factorial con el operador !
 - Modo grados (por defecto) y radianes para las funciones trigonométricas.
 
