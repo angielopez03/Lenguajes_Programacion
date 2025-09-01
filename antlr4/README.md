@@ -6,8 +6,6 @@ Este proyecto implementa una calculadora científica básica utilizando ANTLR 4
 
 La calculadora interpreta expresiones matemáticas definidas en una gramática personalizada y las evalúa mediante un Visitor en Java.
 
----
-
 ## Funciones
 
 La calculadora soporta:
