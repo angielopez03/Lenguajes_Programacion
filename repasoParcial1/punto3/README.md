@@ -1,4 +1,4 @@
 ```
-gcc punto3.c -o buscar
+gcc punto3.c
 ./a.out archivo.txt pastel
 ```
