@@ -2,6 +2,7 @@ En C
 
 ```
 gcc punto1 -o enc
+./enc archivo.txt
 ```
 En flex
 
