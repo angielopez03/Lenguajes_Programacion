@@ -1,0 +1,8 @@
+square = lambda x: x ** 2
+print(square(3))
+doble = lambda y: y ** 2
+print(doble(10))
+knkxcjgnxf
+43
+5r3
+print(2)
