@@ -1,5 +1,7 @@
-E -> E opsuma T | T
-opsuma -> +
-T -> T opmul F | F
-opmul -> *
-F -> id | num | ( E )
+E -> E opsuma T
+E -> T
+T -> T opmul F
+T -> F
+F -> id
+F -> num
+F -> pari E pard
