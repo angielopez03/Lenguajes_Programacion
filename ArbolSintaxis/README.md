@@ -91,5 +91,10 @@ Si la cadena es aceptada → se mostrará **ACEPTADA** y el **árbol de sintaxis
 
 <img width="496" height="96" alt="image" src="https://github.com/user-attachments/assets/3c5e7870-8e3a-4509-8f29-d38f91c85a9c" />
 
+### x*(y+2)
+
+<img width="270" height="72" alt="image" src="https://github.com/user-attachments/assets/5e3f4a0d-bf07-4d09-9e42-65f4d1011aee" />
+
+<img width="1012" height="801" alt="image" src="https://github.com/user-attachments/assets/72c73571-474e-45a1-9038-2e4a7acae0e9" />
 
 ---
