@@ -70,24 +70,24 @@ E -> E opsuma T
 
 Si la cadena es aceptada → se mostrará **ACEPTADA** y el **árbol de sintaxis** en una ventana gráfica. Si contiene símbolos no definidos o no cumple la gramática → mostrará **NO ACEPTADA**.
 
-### - 2+3*4
+### 2+3*4
 
 <img width="1183" height="156" alt="image" src="https://github.com/user-attachments/assets/b3d3070e-3ba8-4c3e-9c61-95463a580627" />
 
 <img width="794" height="676" alt="image" src="https://github.com/user-attachments/assets/a4cea61d-6a5b-41d8-afcf-ae9793b9d513" />
 
-### - 2+3-4
+### 2+3-4
 
 <img width="1224" height="165" alt="image" src="https://github.com/user-attachments/assets/96219ee2-5691-47c2-b621-996711da6789" />
 
-### - 2+3*(4+5)
+### 2+3*(4+5)
 
 <img width="283" height="67" alt="image" src="https://github.com/user-attachments/assets/23a43493-81ec-410e-8393-78ff841c0b23" />
 
 
 <img width="1917" height="1016" alt="image" src="https://github.com/user-attachments/assets/a76f8e68-54e8-4649-8a5f-8f95b06b5661" />
 
-### - 2+3*(4-5)
+### 2+3*(4-5)
 
 <img width="496" height="96" alt="image" src="https://github.com/user-attachments/assets/3c5e7870-8e3a-4509-8f29-d38f91c85a9c" />
 
