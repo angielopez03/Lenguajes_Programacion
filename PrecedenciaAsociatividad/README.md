@@ -50,7 +50,7 @@ WS  :   [ \t]+ -> skip ;
 
 ---
 
-### Gramática con preceddencia modificada
+### Gramática con precedencia modificada
 
 * Precedencia: `+`, `-` > `*`, `/`
 * Asociatividad: izquierda para todos los operadores
@@ -88,15 +88,18 @@ Cadenas probadas con la gramática original (izquierda):
 
 | Expresión  | Evaluación clásica             | Modificada   |
 | ---------- | ------------------------------ | -------------|
-| `2+3*4`    | `2 + (3*4) = 14                |  20          |
-| `10+5*2`   | `10 + (5*2) = 20               |  30          |
-| `1+2*3`    | `1 + (2*3) = 7                 |  9           |
-| `6+3*4/2`  | `6 + ((3*4)/2) =`12            |  18          |
-| `10+20*30` | `10 + (20*30)`= 610            |  900         |
+|  2+3*4     |  2 + (3*4) = 14                |  20          |
+|  10+5*2    |  10 + (5*2) = 20               |  30          |
+|  1+2*3     |  1 + (2*3) = 7                 |  9           |
+|  6+3*4/2   |  6 + ((3*4)/2) =`12            |  18          |
+|  10+20*30  |  10 + (20*30)`= 610            |  900         |
+
 
 <img width="866" height="149" alt="image" src="https://github.com/user-attachments/assets/98a40261-8526-429f-a665-c7cfb7d94481" />
 
+
 <img width="866" height="149" alt="image" src="https://github.com/user-attachments/assets/8950458c-711c-44ac-b08b-9bbcc7300d4a" />
+
 
 En la gramática original las alternativas para la suma y la multiplicación están en el mismo nivel de recursión. Dado que en ANTLR las alternativas de una regla se evalúan en el orden en que se definen, la primera alternativa que ANTLR prueba es la de suma y resta (+, -), y luego intenta la multiplicación y división (*, /). Esto hace que ANTLR priorice las sumas antes que las multiplicaciones, y esto afectará la precedencia de los operadores.
 
@@ -106,7 +109,7 @@ En la gramática original las alternativas para la suma y la multiplicación est
 
 ---
 
-### Gramática con preceddencia modificada (derecha para `-` y `/`)
+### Gramática con precedencia modificada (derecha para `-` y `/`)
 
 * Precedencia: `*`, `/` > `+`, `-`
 * Asociatividad:
@@ -158,13 +161,15 @@ Comparación entre la gramática clásica (izquierda) y la modificada (derecha):
 
 | Expresión   | Izquierda (clásica)  | Derecha (modificada)  |
 | ----------- | -------------------- | --------------------- |
-| `10-5-2`    | `(10 - 5) - 2 = 3`   | `10 - (5 - 2) = 7`    |
-| `100/10/2`  | `(100 / 10) / 2 = 5` | `100 / (10 / 2) = 20` |
-| `40-20-3-5` | `((40-20)-3)-5 = 12` | `40-(20-(3-5)) = 18`  |
-| `50/5/2`    | `(50 / 5) / 2 = 5`   | `50 / (5 / 2) = 20`   |
-| `30-10-5`   | `(30 - 10) - 5 = 15` | `30 - (10 - 5) = 25`  |
+|  10-5-2     |  (10 - 5) - 2 = 3    |  10 - (5 - 2) = 7     |
+|  100/10/2   |  (100 / 10) / 2 = 5  |  100 / (10 / 2) = 20  |
+|  40-20-3-5  |  ((40-20)-3)-5 = 12  |  40-(20-(3-5)) = 18   |
+|  50/5/2     |  (50 / 5) / 2 = 5    |  50 / (5 / 2) = 20    |
+|  30-10-5    |  (30 - 10) - 5 = 15  |  30 - (10 - 5) = 25   |
+
 
 <img width="866" height="156" alt="image" src="https://github.com/user-attachments/assets/1a480232-d067-4e6f-a928-76bd7fb8a326" />
+
 
 <img width="866" height="153" alt="image" src="https://github.com/user-attachments/assets/01404f7d-8e0c-43f6-b967-da83fd71885c" />
 
