@@ -100,7 +100,7 @@ Cadenas probadas con la gramática original (izquierda):
 
 <img width="866" height="149" alt="image" src="https://github.com/user-attachments/assets/8950458c-711c-44ac-b08b-9bbcc7300d4a" />
 
-
+-
 En la gramática original las alternativas para la suma y la multiplicación están en el mismo nivel de recursión. Dado que en ANTLR las alternativas de una regla se evalúan en el orden en que se definen, la primera alternativa que ANTLR prueba es la de suma y resta (+, -), y luego intenta la multiplicación y división (*, /). Esto hace que ANTLR priorice las sumas antes que las multiplicaciones, y esto afectará la precedencia de los operadores.
 
 - Alternativas definidas primero en una regla de ANTLR tienen mayor precedencia porque ANTLR las evalúa primero.
@@ -109,7 +109,7 @@ En la gramática original las alternativas para la suma y la multiplicación est
 
 ---
 
-### Gramática con precedencia modificada (derecha para `-` y `/`)
+### Gramática con asociatividad modificada (derecha para `-` y `/`)
 
 * Precedencia: `*`, `/` > `+`, `-`
 * Asociatividad:
