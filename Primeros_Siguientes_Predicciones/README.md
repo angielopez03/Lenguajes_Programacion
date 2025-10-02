@@ -64,7 +64,7 @@ Calcula los siguientesconsiderando los vacios y repeticiones, iniciando la prime
 <br>
 
 **Cálculo_predicción:**
-<img width="578" height="156" alt="image" src="https://github.com/user-attachments/assets/abd0a373-6d31-4970-b866-b70c33c390ce" />
+<img width="900" height="450" alt="image" src="https://github.com/user-attachments/assets/abd0a373-6d31-4970-b866-b70c33c390ce" />
 
 Se calcula la predicción de cada regla, teniendo en cuenta el vacío y la unión de los siguientes.
 
@@ -72,11 +72,13 @@ Se calcula la predicción de cada regla, teniendo en cuenta el vacío y la unió
 ## Resultados
 
 Gramática 1:
+
 <img width="511" height="792" alt="image" src="https://github.com/user-attachments/assets/3481b06a-6846-4ed0-a894-5ffe7bd23163" />
 
 <br>
 
 Gramática 2:
+
 <img width="501" height="750" alt="image" src="https://github.com/user-attachments/assets/29234f3e-f70b-44fd-9d9c-14cbc354ac1b" />
 
 
