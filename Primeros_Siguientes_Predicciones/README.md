@@ -59,11 +59,27 @@ Construye primeros_nt (un diccionario que para cada no terminal contiene su conj
 **Cálculo_siguientes:**
 <img width="782" height="800" alt="image" src="https://github.com/user-attachments/assets/9895869e-b267-427c-928d-313631364811" />
 
-Calcula los siguientes teniendo en cuenta los vacios y repeticiones, iniciando la primera línea siempre con $.
+Calcula los siguientesconsiderando los vacios y repeticiones, iniciando la primera línea siempre con $.
 
 <br>
 
 **Cálculo_predicción:**
 <img width="578" height="156" alt="image" src="https://github.com/user-attachments/assets/abd0a373-6d31-4970-b866-b70c33c390ce" />
 
-Se calcula la predicción de cada regla, teniendo en cuenta el vacío y la unión de los siguientes
+Se calcula la predicción de cada regla, teniendo en cuenta el vacío y la unión de los siguientes.
+
+
+## Resultados
+
+Gramática 1:
+<img width="511" height="792" alt="image" src="https://github.com/user-attachments/assets/3481b06a-6846-4ed0-a894-5ffe7bd23163" />
+
+<br>
+
+Gramática 2:
+<img width="501" height="750" alt="image" src="https://github.com/user-attachments/assets/29234f3e-f70b-44fd-9d9c-14cbc354ac1b" />
+
+
+<br>
+
+:D
