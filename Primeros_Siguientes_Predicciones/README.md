@@ -76,12 +76,13 @@ Gramática 1:
 <img width="511" height="792" alt="image" src="https://github.com/user-attachments/assets/3481b06a-6846-4ed0-a894-5ffe7bd23163" />
 
 <br>
+<br>
 
 Gramática 2:
 
 <img width="501" height="750" alt="image" src="https://github.com/user-attachments/assets/29234f3e-f70b-44fd-9d9c-14cbc354ac1b" />
 
-
+<br>
 <br>
 
 :D
