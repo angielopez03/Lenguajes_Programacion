@@ -75,7 +75,10 @@ El sistema genera:
 Formato: `resultado := operando1 operador operando2`
 
 Ejemplo:
+
 ```
 t1 := 5 * 2    # Primero: multiplicación
 t2 := 3 + t1   # Luego: suma
+```
+
 ```
