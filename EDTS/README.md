@@ -4,14 +4,15 @@ Sistema completo de **Esquema de Traducción Dirigido por la Sintaxis** (EDTS) p
 
 ## Componentes
 
-1. **Gramática libre de contexto** sin recursión izquierda (LL(1))
-2. **Atributos sintetizados y heredados** para evaluación semántica
-3. **Conjuntos PRIMEROS, SIGUIENTES y PREDICCIÓN** para análisis sintáctico
-4. **AST decorado** con valores calculados en cada nodo
-5. **Tabla de símbolos** con constantes y variables temporales
-6. **Gramática de atributos** con reglas semánticas
-7. **EDTS completo** con acciones intercaladas
-8. **Generador de código intermedio** (tres direcciones)
+1. Lee la expresión desde el archivo entrada.txt
+2. Gramática libre de contexto sin recursión izquierda (LL(1))
+3. Atributos sintetizados y heredados para evaluación semántica
+4. Conjuntos PRIMEROS, SIGUIENTES y PREDICCIÓN** para análisis sintáctico
+5. AST decorado con valores calculados en cada nodo
+6. Tabla de símbolos con constantes y variables temporales
+7. Gramática de atributos con reglas semánticas
+8. EDTS completo con acciones intercaladas
+9. Generador de código intermedio (tres direcciones)
 
 ## Gramática
 
