@@ -63,8 +63,6 @@ El sistema genera:
    2. t2 := 3.0 + t1
    ```
 
-```
-
 ## Conceptos clave
 
 ### Atributos
@@ -75,8 +73,6 @@ El sistema genera:
 Formato: `resultado := operando1 operador operando2`
 
 Ejemplo:
-
-```
 
 ```
 t1 := 5 * 2    # Primero: multiplicación
