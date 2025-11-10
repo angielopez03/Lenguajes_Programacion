@@ -453,10 +453,16 @@ def main():
     
     imprimir_gramatica_atributos()
     
-    print("\n")
-    print("EJEMPLO DE TRADUCCIÓN: {expresion}")
-    
-    expresion = "3 + 5 * 2"
+    ruta_archivo = "entrada.txt"
+
+    try:
+        with open(ruta_archivo, "r") as f:
+            expresion = f.read().strip()
+        print(f"\nEJEMPLO DE TRADUCCIÓN: {expresion}")
+    except Exception as e:
+        print(f"Error al leer el archivo de entrada: {e}")
+        return
+
     tabla = TablaSimbolos()
     generador = GeneradorCodigo()
     
