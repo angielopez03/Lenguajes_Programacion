@@ -46,7 +46,13 @@ El sistema genera:
      └─ hijo_der:
          [OP: *]
            ├─ val = 10.0
-           └─ ...
+           ├─ temp = t1
+           ├─ hijo_izq:
+              [NUM: 5.0]
+                └─ val = 5.0
+           └─ hijo_der:
+              [NUM: 2.0]
+                └─ val = 2.0
    ```
 
 4. **Tabla de símbolos:**
@@ -66,11 +72,11 @@ El sistema genera:
 ## Conceptos clave
 
 ### Atributos
-- **Sintetizados (↑)**: `val` - Se calculan de hijos a padres
-- **Heredados (↓)**: `inh` - Se calculan de padres a hijos
+- **Sintetizados (↑)**: val - Se calculan de hijos a padres
+- **Heredados (↓)**: inh - Se calculan de padres a hijos
 
 ### Código de Tres Direcciones
-Formato: `resultado := operando1 operador operando2`
+Formato: resultado := operando1 operador operando2
 
 Ejemplo:
 
