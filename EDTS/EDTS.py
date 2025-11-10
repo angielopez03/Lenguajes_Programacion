@@ -33,9 +33,7 @@ class EntradaTabla:
     nombre: str
     tipo: str  # 'constante', 'temporal', 'variable'
     valor: Any
-    ambito: str = 'global'
     direccion: Optional[int] = None
-    usado: bool = False
 
 class TablaSimbolos:
     # Tabla de símbolos para almacenar variables y temporales
@@ -57,7 +55,6 @@ class TablaSimbolos:
                 self.direccion_actual += 4
             return entrada
         else:
-            self.tabla[nombre].usado = True
             return self.tabla[nombre]
     
     def nueva_temporal(self) -> str:
@@ -71,12 +68,11 @@ class TablaSimbolos:
     def imprimir(self):
         print(f"\n")
         print("TABLA DE SÍMBOLOS")
-        print(f"{'Nombre':<12} {'Tipo':<12} {'Valor':<10} {'Ámbito':<10} {'Dirección':<12} {'Usado':<8}")
-        print("-"*80)
+        print(f"{'Nombre':<12} {'Tipo':<12} {'Valor':<10} {'Dirección':<12}")
+        print("-"*50)
         for entrada in self.tabla.values():
             dir_str = str(entrada.direccion) if entrada.direccion else '-'
-            print(f"{entrada.nombre:<12} {entrada.tipo:<12} {entrada.valor:<10} "
-                  f"{entrada.ambito:<10} {dir_str:<12} {'Sí' if entrada.usado else 'No':<8}")
+            print(f"{entrada.nombre:<12} {entrada.tipo:<12} {entrada.valor:<10} {dir_str:<12}")
 
 def parsear_produccion(produccion):
     if '->' in produccion:
@@ -458,7 +454,7 @@ def main():
     imprimir_gramatica_atributos()
     
     print("\n")
-    print("EJEMPLO DE TRADUCCIÓN: 3 + 5 * 2")
+    print("EJEMPLO DE TRADUCCIÓN: {expresion}")
     
     expresion = "3 + 5 * 2"
     tabla = TablaSimbolos()
