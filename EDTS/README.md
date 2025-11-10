@@ -7,7 +7,7 @@ Sistema completo de **Esquema de Traducción Dirigido por la Sintaxis** (EDTS) p
 1. Lee la expresión desde el archivo entrada.txt
 2. Gramática libre de contexto sin recursión izquierda (LL(1))
 3. Atributos sintetizados y heredados para evaluación semántica
-4. Conjuntos PRIMEROS, SIGUIENTES y PREDICCIÓN** para análisis sintáctico
+4. Conjuntos PRIMEROS, SIGUIENTES y PREDICCIÓN para análisis sintáctico
 5. AST decorado con valores calculados en cada nodo
 6. Tabla de símbolos con constantes y variables temporales
 7. Gramática de atributos con reglas semánticas
