@@ -28,7 +28,7 @@ F  → num | ( E )
 
 El sistema genera:
 
-1. **Gramática formal** con todas las producciones
+1. Gramática formal con todas las producciones
 2. **Conjuntos de análisis:**
    ```
    PRIMEROS(E) = { (, num }
