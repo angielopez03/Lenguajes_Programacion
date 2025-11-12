@@ -29,14 +29,14 @@ F  → num | ( E )
 El sistema genera:
 
 1. Gramática formal con todas las producciones
-2. **Conjuntos de análisis:**
+2. Conjuntos de análisis:
    ```
    PRIMEROS(E) = { (, num }
    SIGUIENTES(E) = { $, ) }
    PREDICCIÓN(E → T E') = { (, num }
    ```
 
-3. **AST decorado:**
+3. AST decorado:
    ```
    [OP: +]
      ├─ val = 13
@@ -56,7 +56,7 @@ El sistema genera:
                 └─ val = 2.0
    ```
 
-4. **Tabla de símbolos:**
+4. Tabla de símbolos:
    ```
    Nombre       Tipo         Valor      Dirección
    t1           temporal     10.0       100
@@ -64,7 +64,7 @@ El sistema genera:
    _const3      constante    3.0        -
    ```
 
-5. **Código intermedio:**
+5. Código intermedio:
    ```
    1. t1 := 5.0 * 2.0
    2. t2 := 3.0 + t1
