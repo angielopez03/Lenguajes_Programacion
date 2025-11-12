@@ -17,7 +17,7 @@ Sistema completo de **Esquema de Traducción Dirigido por la Sintaxis** (EDTS) p
 ## Ejemplo en entrada.txt
 
 ```
-3 * 2 + 3
+3 + 5 * 2
 ```
 
 ## Gramática
