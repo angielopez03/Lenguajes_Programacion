@@ -75,8 +75,10 @@ El sistema genera:
    1. t1 := 5.0 * 2.0
    2. t2 := 3.0 + t1
    ```
+   
+---
 
-## Conceptos clave
+## Conceptos
 
 ### Atributos
 - **Sintetizados (↑)**: val - Se calculan de hijos a padres
