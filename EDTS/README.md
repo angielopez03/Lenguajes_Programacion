@@ -14,6 +14,12 @@ Sistema completo de **Esquema de Traducción Dirigido por la Sintaxis** (EDTS) p
 8. EDTS completo con acciones intercaladas
 9. Generador de código intermedio (tres direcciones)
 
+## Ejemplo en entrada.txt
+
+```
+3 * 2 + 3
+```
+
 ## Gramática
 
 ```
