@@ -17,7 +17,7 @@ producciones = [
 @dataclass
 class Nodo:
     """Nodo del AST"""
-    tipo: str  # 'NUM', 'OP', 'TEMP'
+    tipo: str
     valor: Any
     izq: Optional['Nodo'] = None
     der: Optional['Nodo'] = None
@@ -29,14 +29,12 @@ class Nodo:
 
 @dataclass
 class EntradaTabla:
-    # Entrada en la tabla de símbolos
     nombre: str
-    tipo: str  # 'constante', 'temporal', 'variable'
+    tipo: str
     valor: Any
     direccion: Optional[int] = None
 
 class TablaSimbolos:
-    # Tabla de símbolos para almacenar variables y temporales
     def __init__(self):
         self.tabla: Dict[str, EntradaTabla] = {}
         self.contador_temp = 0
@@ -243,7 +241,6 @@ def construir_ast_simple(expresion: str, tabla: TablaSimbolos, generador: Genera
             
             nodo_T = parsear_T()
             
-            # Crear temporal y generar código
             temp = tabla.nueva_temporal()
             val_izq = heredado.atributos.get('val', heredado.valor)
             val_der = nodo_T.atributos.get('val', nodo_T.valor)
@@ -278,7 +275,6 @@ def construir_ast_simple(expresion: str, tabla: TablaSimbolos, generador: Genera
             
             nodo_F = parsear_F()
             
-            # crear temporal y generar codigo
             temp = tabla.nueva_temporal()
             val_izq = heredado.atributos.get('val', heredado.valor)
             val_der = nodo_F.atributos.get('val', nodo_F.valor)
@@ -532,3 +528,4 @@ F → ( E ) { F.val := E.val }
 
 if __name__ == "__main__":
     main()
+
