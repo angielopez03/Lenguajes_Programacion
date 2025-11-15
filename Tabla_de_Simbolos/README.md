@@ -10,7 +10,7 @@ Este proyecto implementa un Esquema de Traducción Dirigido por Sintaxis (ETDS) 
 
 ## Uso
 
-1. **Crear archivo de entrada** `entrada.txt`:
+1. **Crear archivo de entrada** entrada.txt:
 ```python
 z = x * 2 + y / 4 - 5
 ```
@@ -29,7 +29,7 @@ python tabla.py
 ## Ejemplos de uso
 
 ### Ejemplo 1: Expresión Aritmética Simple
-**Entrada (`entrada.txt`):**
+**Entrada (entrada.txt):**
 ```python
 x = 5 + 3
 ```
@@ -72,28 +72,28 @@ resultado = (10 + 5) * 2 - 8 / 4
 ## Características soportadas
 
 ### Expresiones Aritméticas
-- Operadores: `+`, `-`, `*`, `/`, `%`
+- Operadores: +, -, *, /, %
 - Precedencia y asociatividad correctas
 - Paréntesis para agrupar
 
 ### Literales
-- Enteros: `42`, `0`, `1234`
-- Cadenas: `"hola"`, `'mundo'`
-- Booleanos: `True`, `False`
-- None: `None`
+- Enteros: 42, 0, 1234
+- Cadenas: "hola", 'mundo'
+- Booleanos: True, False
+- None: None
 
 ### Variables
 - Declaración implícita
-- Asignación: `x = 10`
+- Asignación: x = 10
 - Uso en expresiones
 
 ### Listas
-- Literales: `[1, 2, 3]`
-- Acceso: `lista[0]`
-- Listas anidadas: `[[1, 2], [3, 4]]`
+- Literales: [1, 2, 3]
+- Acceso: lista[0]
+- Listas anidadas: [[1, 2], [3, 4]]
 
 ### Operadores relacionales
-- Comparaciones: `>`, `<`, `>=`, `<=`, `==`, `!=`
+- Comparaciones: >, <, >=, <=, ==, !=
 - En expresiones condicionales
 
 ---
@@ -119,9 +119,9 @@ C  → E relop E
 
 ### Atributos utilizados
 
-- **`lugar`**: Nombre de la variable/temporal donde se guarda el resultado
-- **`inh`** (heredado): Valor que viene del padre
-- **`val`**: Valor sintetizado hacia arriba
+- **lugar**: Nombre de la variable/temporal donde se guarda el resultado
+- **inh** (heredado): Valor que viene del padre
+- **val**: Valor sintetizado hacia arriba
 
 ### Acciones semánticas principales
 
