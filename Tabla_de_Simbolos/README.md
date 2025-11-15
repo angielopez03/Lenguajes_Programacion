@@ -1,6 +1,6 @@
-# ETDS y Código de Tres Direcciones
+# ETDS y código de tres direcciones
 
-Este proyecto implementa un **Esquema de Traducción Dirigido por Sintaxis (ETDS)** para un subconjunto del lenguaje Python. El traductor genera:
+Este proyecto implementa un Esquema de Traducción Dirigido por Sintaxis (ETDS) para un subconjunto del lenguaje Python. El traductor genera:
 
 - AST Decorado (Árbol de Sintaxis Abstracta con atributos)
 - Tabla de Símbolos con variables, temporales y constantes
@@ -26,7 +26,7 @@ python tabla.py
    - Código de tres direcciones
 
 
-## Ejemplos de Uso
+## Ejemplos de uso
 
 ### Ejemplo 1: Expresión Aritmética Simple
 **Entrada (`entrada.txt`):**
@@ -52,13 +52,13 @@ CÓDIGO INTERMEDIO:
    2. x := t1
 ```
 
-### Ejemplo 2: Expresión Compleja con Paréntesis
+### Ejemplo 2: Expresión compleja con paréntesis
 **Entrada:**
 ```python
 resultado = (10 + 5) * 2 - 8 / 4
 ```
 
-**Código de Tres Direcciones:**
+**Código de tres direcciones:**
 ```
 1. t1 := 10 + 5
 2. t2 := t1 * 2
@@ -69,7 +69,7 @@ resultado = (10 + 5) * 2 - 8 / 4
 
 ---
 
-## Características Soportadas
+## Características soportadas
 
 ### Expresiones Aritméticas
 - Operadores: `+`, `-`, `*`, `/`, `%`
@@ -92,15 +92,15 @@ resultado = (10 + 5) * 2 - 8 / 4
 - Acceso: `lista[0]`
 - Listas anidadas: `[[1, 2], [3, 4]]`
 
-### Operadores Relacionales
+### Operadores relacionales
 - Comparaciones: `>`, `<`, `>=`, `<=`, `==`, `!=`
 - En expresiones condicionales
 
 ---
 
-## Gramática Soportada
+## Gramática soportada
 
-### Gramática Simplificada del ETDS
+### Gramática sdimplificada del ETDS
 
 ```
 E  → T E'
@@ -115,15 +115,15 @@ C  → E relop E
 
 ---
 
-## Esquema de Traducción
+## Esquema de traducción
 
-### Atributos Utilizados
+### Atributos utilizados
 
 - **`lugar`**: Nombre de la variable/temporal donde se guarda el resultado
 - **`inh`** (heredado): Valor que viene del padre
 - **`val`**: Valor sintetizado hacia arriba
 
-### Acciones Semánticas Principales
+### Acciones semánticas principales
 
 ```python
 E → T { E'.inh := T.lugar } 
