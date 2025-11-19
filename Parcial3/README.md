@@ -13,7 +13,7 @@
 - UPDATE (set) - Actualizar registros
 - DELETE (drop) - Eliminar registros
 - WHERE - Filtros condicionales en todas las operaciones
-- Múltiples tablas - Hasta 10 tablas simultáneas
+- Múltiples tablas
 - Tipos de datos - Números, strings, booleanos, null
 - Persistencia en sesión - Los datos se mantienen durante la ejecución
 
@@ -118,12 +118,12 @@ drop users where age < 18
 
 | Atributo | Tipo         | Descripción                                      |
 | -------- | ------------ | ----------------------------------------------- |
-| `sql`    | string       | Sintético (genera SQL final)                    |
-| `tabla`  | string       | Heredado (nombre de la tabla objetivo)          |
-| `cols`   | list<string> | Sintético (lista de columnas)                   |
-| `vals`   | list<string> | Sintético (lista de valores SQL)                |
-| `cond`   | string       | Sintético (condición SQL generada)              |
-| `lexema` | string       | Sintético (captura literal del lexer en tokens) |
+| sql    | string       | Sintético (genera SQL final)                    |
+| tabla  | string       | Heredado (nombre de la tabla objetivo)          |
+| cols   | list<string> | Sintético (lista de columnas)                   |
+| vals   | list<string> | Sintético (lista de valores SQL)                |
+| cond   | string       | Sintético (condición SQL generada)              |
+| lexema | string       | Sintético (captura literal del lexer en tokens) |
 
 
 ### Función generadora de una gramática de atributos
@@ -178,5 +178,37 @@ FIN FUNCIÓN
 
 ## Punto 2
 
+### Notación BNF
 
+```
+<programa> ::= <sentencia>+
 
+<sentencia> ::= <identificador> "=" <expresion> ";"
+
+<expresion> ::= <matriz>
+              | <expresion> "·" <expresion>
+
+<matriz> ::= "[" <filas> "]"
+
+<filas> ::= <fila> (";" <fila>)*
+
+<fila> ::= "[" <numero> ("," <numero>)* "]"
+
+<numero> ::= ["-"] <digito>+ ["." <digito>+]
+
+<identificador> ::= <letra> (<letra> | <digito> | "_")*
+
+<letra> ::= "a" | "b" | ... | "z" | "A" | "B" | ... | "Z"
+
+<digito> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+```
+---
+
+### Punto 3
+
+Ejecutar
+
+```
+antlr4 -Dlanguage=Python3 -visitor matrices.g4
+python3 main.py prueba.txt
+```
