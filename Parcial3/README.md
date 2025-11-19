@@ -19,7 +19,7 @@
 
 ### Notación BNF
 
-```bnf
+```
 # ===== PROGRAMA =====
 
 <programa> ::= { <sentencia> }
@@ -114,3 +114,69 @@ Eliminar usuario menor de edad
 ```
 drop users where age < 18
 ```
+### Atributos generados
+
+| Atributo | Tipo         | Descripción                                      |
+| -------- | ------------ | ----------------------------------------------- |
+| `sql`    | string       | Sintético (genera SQL final)                    |
+| `tabla`  | string       | Heredado (nombre de la tabla objetivo)          |
+| `cols`   | list<string> | Sintético (lista de columnas)                   |
+| `vals`   | list<string> | Sintético (lista de valores SQL)                |
+| `cond`   | string       | Sintético (condición SQL generada)              |
+| `lexema` | string       | Sintético (captura literal del lexer en tokens) |
+
+
+### Función generadora de una gramática de atributos
+
+```
+FUNCIÓN GenerarGramaticaDeAtributos(BNF)
+    GA ← nueva_gramatica()              # Gramática con atributos
+    PARA CADA produccion P EN BNF HACER
+        regla ← P                       # Copiar estructura sintáctica
+        
+        SI encabezado(P) ES "new"       # CREATE → INSERT
+            regla.agregarAtributo("sql", 
+                "INSERT INTO " + <identificador>.lexema +
+                "(" + <pares>.cols + ") VALUES (" + <pares>.vals + ");")
+
+        SINO SI encabezado(P) ES "get"  # READ → SELECT
+            regla.agregarAtributo("sql",
+                "SELECT * FROM " + <identificador>.lexema +
+                condicionOpcional(<opt_where>.cond))
+
+        SINO SI encabezado(P) ES "set"  # UPDATE
+            regla.agregarAtributo("sql",
+                "UPDATE " + <identificador>.lexema +
+                " SET " + <pares>.cols_vals +
+                condicionOpcional(<opt_where>.cond) + ";")
+
+        SINO SI encabezado(P) ES "drop" # DELETE
+            regla.agregarAtributo("sql",
+                "DELETE FROM " + <identificador>.lexema +
+                condicionOpcional(<opt_where>.cond) + ";")
+
+        SINO SI P CONTIENE <pares>
+            regla.agregarAtributo("cols", concatenarCampos(P))
+            regla.agregarAtributo("vals", concatenarValores(P))
+            regla.agregarAtributo("cols_vals", concatenarAsignaciones(P))
+
+        SINO SI P CONTIENE <opt_where>
+            regla.agregarAtributo("cond", construirCondicion(P))
+
+        SINO SI P TERMINA EN <valor>
+            regla.agregarAtributo("lexema", convertirLiteral(P))
+
+        FIN SI
+        
+        GA.agregarRegla(regla)
+    FIN PARA
+    
+    RETORNAR GA
+FIN FUNCIÓN
+```
+---
+
+## Punto 2
+
+
+
