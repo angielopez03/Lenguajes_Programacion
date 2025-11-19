@@ -98,3 +98,8 @@ get users where age >= 18
 
 #### Actualizar edad de Ana
 set users { age: 26 } where name = "Ana"
+
+#### 5. DELETE - Eliminar registros
+
+#### Eliminar usuario menor de edad
+drop users where age < 18
