@@ -186,21 +186,23 @@ FIN FUNCIÓN
 <sentencia> ::= <identificador> "=" <expresion> ";"
 
 <expresion> ::= <matriz>
+              | <identificador>
               | <expresion> "·" <expresion>
+              | <expresion> ".punto(" <expresion> ")"
+              | "(" <expresion> ")"
 
 <matriz> ::= "[" <filas> "]"
-
 <filas> ::= <fila> (";" <fila>)*
-
 <fila> ::= "[" <numero> ("," <numero>)* "]"
 
 <numero> ::= ["-"] <digito>+ ["." <digito>+]
 
 <identificador> ::= <letra> (<letra> | <digito> | "_")*
 
-<letra> ::= "a" | "b" | ... | "z" | "A" | "B" | ... | "Z"
+<letra> ::= "a" | ... | "z" | "A" | ... | "Z"
+<digito> ::= "0" | ... | "9"
 
-<digito> ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
+# Espacios, saltos de línea y comentarios iniciados por "//" se ignoran.
 ```
 ---
 
@@ -212,3 +214,36 @@ Ejecutar
 antlr4 -Dlanguage=Python3 -visitor matrices.g4
 python3 main.py prueba.txt
 ```
+
+#### Archivo prueba.txt
+
+```
+A = [[1, 2, 3], 
+     [4, 5, 6]];
+
+B = [[7, 8], 
+     [9, 10], 
+     [11, 12]];
+
+C = A · B;
+
+D = [[1], 
+     [2]];
+
+E = C · D;
+
+F = A.punto(B);
+
+G = (A · B) · D;
+
+I = [[1, 0], 
+     [0, 1]];
+
+H = I · C;
+```
+
+#### Notas
+
+- El lenguaje solo admite operaciones con dimensiones compatibles.
+- Los comentarios se escriben con //.
+- Se puede usar · o .punto() para el producto punto.
