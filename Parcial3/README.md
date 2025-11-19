@@ -8,27 +8,14 @@
 
 ### Operaciones Implementadas
 
-- CREATE (`new`) - Insertar registros
-- READ (`get`) - Consultar registros
-- UPDATE (`set`) - Actualizar registros
-- DELETE (`drop`) - Eliminar registros
+- CREATE (new) - Insertar registros
+- READ (get) - Consultar registros
+- UPDATE (set) - Actualizar registros
+- DELETE (drop) - Eliminar registros
 - WHERE - Filtros condicionales en todas las operaciones
 - Múltiples tablas - Hasta 10 tablas simultáneas
 - Tipos de datos - Números, strings, booleanos, null
 - Persistencia en sesión - Los datos se mantienen durante la ejecución
-
-### Operadores Soportados
-
-| Operador | Descripción | Ejemplo |
-|----------|-------------|---------|
-| `=` | Igual | `age = 25` |
-| `!=` | Diferente | `status != "inactive"` |
-| `>` | Mayor que | `price > 100` |
-| `<` | Menor que | `stock < 10` |
-| `>=` | Mayor o igual | `age >= 18` |
-| `<=` | Menor o igual | `quantity <= 50` |
-
----
 
 ### Notación BNF
 
@@ -91,3 +78,23 @@
 <comentario> ::= "#" <resto_de_linea>
                | "//" <resto_de_linea>
 ```
+
+#### 1. CREATE - Insertar registros
+
+#### Insertar usuarios
+new users { name: "Ana", age: 25, active: true }
+
+#### 2. READ - Consultar registros
+
+#### Leer todos los usuarios
+get users
+
+#### 3. READ con WHERE - Consultas filtradas
+
+#### Usuarios mayores de edad
+get users where age >= 18
+
+#### 4. UPDATE - Actualizar registros
+
+#### Actualizar edad de Ana
+set users { age: 26 } where name = "Ana"
