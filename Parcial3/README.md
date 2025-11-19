@@ -79,27 +79,38 @@
                | "//" <resto_de_linea>
 ```
 
-#### 1. CREATE - Insertar registros
+#### CREATE - Insertar registros
+Insertar usuarios
 
-#### Insertar usuarios
+```
 new users { name: "Ana", age: 25, active: true }
+```
 
-#### 2. READ - Consultar registros
+#### READ - Consultar registros
+Leer todos los usuarios
 
-#### Leer todos los usuarios
+```
 get users
+```
 
-#### 3. READ con WHERE - Consultas filtradas
+#### READ con WHERE - Consultas filtradas
+Usuarios mayores de edad
 
-#### Usuarios mayores de edad
+```
 get users where age >= 18
+```
 
-#### 4. UPDATE - Actualizar registros
+#### UPDATE - Actualizar registros
 
-#### Actualizar edad de Ana
+Actualizar edad de Ana
+
+```
 set users { age: 26 } where name = "Ana"
+```
 
-#### 5. DELETE - Eliminar registros
+#### DELETE - Eliminar registros
+Eliminar usuario menor de edad
 
-#### Eliminar usuario menor de edad
+```
 drop users where age < 18
+```
