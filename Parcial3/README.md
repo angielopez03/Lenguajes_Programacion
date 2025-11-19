@@ -242,6 +242,13 @@ I = [[1, 0],
 H = I · C;
 ```
 
+#### Resultado
+
+<img width="561" height="639" alt="image" src="https://github.com/user-attachments/assets/f3ff24b5-66b4-4b15-9989-5daa07af4dd6" />
+
+<img width="561" height="198" alt="image" src="https://github.com/user-attachments/assets/9417bd5f-5c58-4e2a-b4ad-56e110f376ed" />
+
+
 #### Notas
 
 - El lenguaje solo admite operaciones con dimensiones compatibles.
